@@ -1,0 +1,9 @@
+/spec/fixtures/manifests
+/spec/fixtures/modules
+/.bundle
+/.vagrant
+/Gemfile.lock
+.*.sw?
+/.rspec_system
+coverage
+/vendor
