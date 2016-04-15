@@ -9,10 +9,10 @@
     * [Setup requirements](#setup-requirements)
     * [Beginning with make_noop](#beginning-with-make_noop)
 4. [Usage - Configuration options and additional functionality](#usage)
-5. [MCO_Usage  - How to use the MCO application](#mco-usage
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+5. [MCO_Usage  - How to use the MCO application](#mco-usage)
+6. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+7. [Limitations - OS compatibility, etc.](#limitations)
+8. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
