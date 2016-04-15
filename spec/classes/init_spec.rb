@@ -136,7 +136,8 @@ describe 'make_noop' do
       }
     end
 
-    it { is_expected.to compile.with_all_deps }
+    # Commented out due to https://github.com/rodjek/rspec-puppet/issues/192
+    # it { is_expected.to compile.with_all_deps }
     it { is_expected.to contain_class('make_noop') }
 
     it { is_expected.to contain_file('C:/ProgramData/puppetlabs/mcollective/plugins/mcollective/agent/make_noop.rb').with(
