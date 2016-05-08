@@ -44,22 +44,40 @@ class make_noop (
     }
   }
 
-  file { "${mco_dir}/application/enable_noop.rb":
-    ensure => $ensure_app,
-    source => 'puppet:///modules/make_noop/enable_noop.rb',
+  if $include_app {
+    file { "${mco_dir}/application/enable_noop.rb":
+      ensure => $ensure_app,
+      source => 'puppet:///modules/make_noop/enable_noop.rb',
+    }
+    file { "${mco_dir}/application/disable_noop.rb":
+      ensure => $ensure_app,
+      source => 'puppet:///modules/make_noop/disable_noop.rb',
+    }
+    file { "${mco_dir}/application/upgrade_pe.rb":
+      ensure => $ensure_app,
+      source => 'puppet:///modules/make_noop/upgrade_pe_app.rb',
+    }
   }
-  file { "${mco_dir}/application/disable_noop.rb":
-    ensure => $ensure_app,
-    source => 'puppet:///modules/make_noop/disable_noop.rb',
-  }
-  file { "${mco_dir}/agent/make_noop.rb":
-    ensure => $ensure_agent,
-    source => 'puppet:///modules/make_noop/make_noop.rb',
-    notify => Service[$mco_svc],
+  if $include_agent {
+    file { "${mco_dir}/agent/make_noop.rb":
+      ensure => $ensure_agent,
+      source => 'puppet:///modules/make_noop/make_noop.rb',
+      notify => Service[$mco_svc],
+    }
+    file { "${mco_dir}/agent/upgrade_pe.rb":
+      ensure => $ensure_agent,
+      source => 'puppet:///modules/make_noop/upgrade_pe.rb',
+      notify => Service[$mco_svc],
+    }
   }
   file { "${mco_dir}/agent/make_noop.ddl":
     ensure => $ensure_ddl,
     source => 'puppet:///modules/make_noop/make_noop.ddl',
+    notify => Service[$mco_svc],
+  }
+  file { "${mco_dir}/agent/upgrade_pe.ddl":
+    ensure => $ensure_ddl,
+    source => 'puppet:///modules/make_noop/upgrade_pe.ddl',
     notify => Service[$mco_svc],
   }
 }
