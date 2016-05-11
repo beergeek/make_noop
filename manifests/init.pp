@@ -31,7 +31,7 @@ class make_noop (
         mode   => '0664',         # Both user and group need write permission
       }
     }
-    'Linux': {
+    'Linux', 'SunOS': {
       $mco_dir = '/opt/puppetlabs/mcollective/plugins/mcollective'
       File {
         owner  => 'root',

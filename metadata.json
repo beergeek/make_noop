@@ -25,6 +25,6 @@
     }
   ],
     "dependencies": [
-    { "name": "puppetlabs/puppet_enterprise", "version_requirement": ">= 2015.2.1" },
-  ],
+    { "name": "puppetlabs/puppet_enterprise", "version_requirement": ">= 2015.2.1" }
+  ]
 }
