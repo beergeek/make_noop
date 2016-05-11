@@ -15,10 +15,24 @@ describe 'make_noop' do
     end
   end
 
+  context "Fail for non-PE" do
+    let(:facts) {
+      {
+        :kernel         => 'Linux',
+        :puppetversion  => '4.4.4',
+      }
+    }
+
+    it 'should fail badly for non PE' do
+      expect { catalogue }.to raise_error(Puppet::Error, /This module only works with PE2015 and greater/)
+    end
+  end
+
   context 'On Linux with defaults' do
     let(:facts) do
       {
         :kernel         => 'Linux',
+        :pe_build       => '2016.1.1',
         :puppetversion  => '4.4.4',
       }
     end
@@ -59,6 +73,7 @@ describe 'make_noop' do
     let(:facts) do
       {
         :kernel         => 'Linux',
+        :pe_build       => '2016.1.1',
         :puppetversion  => '4.4.4',
       }
     end
@@ -110,6 +125,7 @@ describe 'make_noop' do
     let(:facts) do
       {
         :kernel         => 'Linux',
+        :pe_build       => '2016.1.1',
         :puppetversion  => '4.4.4',
       }
     end
@@ -148,6 +164,7 @@ describe 'make_noop' do
     let(:facts) do
       {
         :kernel         => 'Windows',
+        :pe_build       => '2016.1.1',
         :puppetversion  => '4.4.4',
       }
     end
@@ -180,6 +197,7 @@ describe 'make_noop' do
     let(:facts) do
       {
         :kernel         => 'Windows',
+        :pe_build       => '2016.1.1',
         :puppetversion  => '4.4.4',
       }
     end
@@ -231,6 +249,7 @@ describe 'make_noop' do
     let(:facts) do
       {
         :kernel         => 'Windows',
+        :pe_build       => '2016.1.1',
         :puppetversion  => '4.4.4',
       }
     end
