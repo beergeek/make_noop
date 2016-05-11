@@ -53,10 +53,6 @@ class make_noop (
       ensure => $ensure_app,
       source => 'puppet:///modules/make_noop/disable_noop.rb',
     }
-    file { "${mco_dir}/application/upgrade_pe.rb":
-      ensure => $ensure_app,
-      source => 'puppet:///modules/make_noop/upgrade_pe_app.rb',
-    }
   }
   if $include_agent {
     file { "${mco_dir}/agent/make_noop.rb":
@@ -64,20 +60,10 @@ class make_noop (
       source => 'puppet:///modules/make_noop/make_noop.rb',
       notify => Service[$mco_svc],
     }
-    file { "${mco_dir}/agent/upgrade_pe.rb":
-      ensure => $ensure_agent,
-      source => 'puppet:///modules/make_noop/upgrade_pe.rb',
-      notify => Service[$mco_svc],
-    }
   }
   file { "${mco_dir}/agent/make_noop.ddl":
     ensure => $ensure_ddl,
     source => 'puppet:///modules/make_noop/make_noop.ddl',
-    notify => Service[$mco_svc],
-  }
-  file { "${mco_dir}/agent/upgrade_pe.ddl":
-    ensure => $ensure_ddl,
-    source => 'puppet:///modules/make_noop/upgrade_pe.ddl',
     notify => Service[$mco_svc],
   }
 }
