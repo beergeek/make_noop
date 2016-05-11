@@ -1,6 +1,6 @@
 {
     "name": "beergeek-make_noop",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Brett Gray",
     "license": "Apache-2.0",
     "summary": "A module with a MCO agent and application to enable or disable noop",
@@ -34,6 +34,7 @@
         "10",
         "11"
       ]
+    },
     {
       "operatingsystem": "Windows",
       "operatingsystemrelease": [
