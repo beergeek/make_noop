@@ -1,6 +1,6 @@
 {
     "name": "beergeek-make_noop",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "author": "Brett Gray",
     "license": "Apache-2.0",
     "summary": "A module with a MCO agent and application to enable or disable noop",
@@ -9,9 +9,31 @@
     "tags": ["noop", "mcollective"],
     "operatingsystem_support": [
     {
-      "operatingsystem":"RedHat",
-      "operatingsystemrelease":[ "6.0", "7.0" ]
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7"
+      ]
     },
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem":"CentOS",
+      "operatingsystemrelease":[
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem":"Solaris",
+      "operatingsystemrelease":[
+        "10",
+        "11"
+      ]
     {
       "operatingsystem": "Windows",
       "operatingsystemrelease": [
@@ -25,6 +47,5 @@
     }
   ],
     "dependencies": [
-    { "name": "puppetlabs/puppet_enterprise", "version_requirement": ">= 2015.2.1" }
   ]
 }

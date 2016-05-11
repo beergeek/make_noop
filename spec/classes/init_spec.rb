@@ -3,10 +3,23 @@ require 'spec_helper'
 describe 'make_noop' do
   let(:pre_condition) { 'service { mcollective: }' }
 
+  context "Fail for wrong version of Puppet" do
+    let(:facts) {
+      {
+        :puppetversion => '3.2.0',
+      }
+    }
+
+    it 'should fail badly' do
+      expect { catalogue }.to raise_error(Puppet::Error, /This module is targeted at Puppet 4/)
+    end
+  end
+
   context 'On Linux with defaults' do
     let(:facts) do
       {
-        :kernel     => 'Linux'
+        :kernel         => 'Linux',
+        :puppetversion  => '4.4.4',
       }
     end
 
@@ -45,7 +58,8 @@ describe 'make_noop' do
   context 'On Linux with application also selected' do
     let(:facts) do
       {
-        :kernel     => 'Linux'
+        :kernel         => 'Linux',
+        :puppetversion  => '4.4.4',
       }
     end
     let(:params) do
@@ -95,7 +109,8 @@ describe 'make_noop' do
   context "On Linux wiht all deselected" do
     let(:facts) do
       {
-        :kernel     => 'Linux'
+        :kernel         => 'Linux',
+        :puppetversion  => '4.4.4',
       }
     end
     let(:params) do
@@ -132,7 +147,8 @@ describe 'make_noop' do
   context 'On Windoz with defaults' do
     let(:facts) do
       {
-        :kernel     => 'Windows'
+        :kernel         => 'Windows',
+        :puppetversion  => '4.4.4',
       }
     end
 
@@ -163,7 +179,8 @@ describe 'make_noop' do
   context 'On Windoz with application also selected' do
     let(:facts) do
       {
-        :kernel     => 'Windows'
+        :kernel         => 'Windows',
+        :puppetversion  => '4.4.4',
       }
     end
     let(:params) do
@@ -213,7 +230,8 @@ describe 'make_noop' do
   context 'On Windoz with all deselected' do
     let(:facts) do
       {
-        :kernel     => 'Windows'
+        :kernel         => 'Windows',
+        :puppetversion  => '4.4.4',
       }
     end
     let(:params) do

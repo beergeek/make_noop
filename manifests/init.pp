@@ -3,6 +3,10 @@ class make_noop (
   Boolean $include_agent = true,
 ) {
 
+  if versioncmp($puppetversion, '4.0.0') < 0 {
+    fail("This module is targeted at Puppet 4, not Puppet ${puppetversion}")
+  }
+
   $mco_svc = 'mcollective'
   if $include_agent {
     $ensure_agent = 'file'
@@ -44,22 +48,18 @@ class make_noop (
     }
   }
 
-  if $include_app {
-    file { "${mco_dir}/application/enable_noop.rb":
-      ensure => $ensure_app,
-      source => 'puppet:///modules/make_noop/enable_noop.rb',
-    }
-    file { "${mco_dir}/application/disable_noop.rb":
-      ensure => $ensure_app,
-      source => 'puppet:///modules/make_noop/disable_noop.rb',
-    }
+  file { "${mco_dir}/application/enable_noop.rb":
+    ensure => $ensure_app,
+    source => 'puppet:///modules/make_noop/enable_noop.rb',
   }
-  if $include_agent {
-    file { "${mco_dir}/agent/make_noop.rb":
-      ensure => $ensure_agent,
-      source => 'puppet:///modules/make_noop/make_noop.rb',
-      notify => Service[$mco_svc],
-    }
+  file { "${mco_dir}/application/disable_noop.rb":
+    ensure => $ensure_app,
+    source => 'puppet:///modules/make_noop/disable_noop.rb',
+  }
+  file { "${mco_dir}/agent/make_noop.rb":
+    ensure => $ensure_agent,
+    source => 'puppet:///modules/make_noop/make_noop.rb',
+    notify => Service[$mco_svc],
   }
   file { "${mco_dir}/agent/make_noop.ddl":
     ensure => $ensure_ddl,
