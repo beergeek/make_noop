@@ -6,9 +6,6 @@ class make_noop (
   if versioncmp($puppetversion, '4.0.0') < 0 {
     fail("This module is targeted at Puppet 4, not Puppet ${puppetversion}")
   }
-  if !$pe_build or versioncmp($pe_build, '2015.2.0') < 0 {
-    fail("This module only works with PE2015 and greater")
-  }
 
   $mco_svc = 'mcollective'
   if $include_agent {

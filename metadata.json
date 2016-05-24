@@ -48,5 +48,6 @@
     }
   ],
     "dependencies": [
+      {"name":"puppetlabs/pe_inifile","version_requirement":">=1.0.0"}
   ]
 }

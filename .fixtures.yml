@@ -1,3 +1,5 @@
 fixtures:
+  repositories:
+    inifile: 'https://github.com/puppetlabs/puppetlabs-inifile.git'
   symlinks:
     make_noop: "#{source_dir}"

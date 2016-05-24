@@ -29,11 +29,11 @@ module MCollective
       end
 
       action 'enable_noop' do
-        reply[:out] = resource_manage('pe_ini_setting', 'noop', {'ensure' => 'present','path' => @configfile,'section' => 'agent','setting' => 'noop', 'value' => 'true'})
+        reply[:out] = resource_manage('ini_setting', 'noop', {'ensure' => 'present','path' => @configfile,'section' => 'agent','setting' => 'noop', 'value' => 'true'})
       end
 
       action 'disable_noop' do
-        reply[:out] = resource_manage('pe_ini_setting', 'noop', {'ensure' => 'present','path' => @configfile,'section' => 'agent','setting' => 'noop', 'value' => 'false'})
+        reply[:out] = resource_manage('ini_setting', 'noop', {'ensure' => 'present','path' => @configfile,'section' => 'agent','setting' => 'noop', 'value' => 'false'})
       end
     end
   end
