@@ -1,6 +1,6 @@
 {
     "name": "beergeek-make_noop",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "author": "Brett Gray",
     "license": "Apache-2.0",
     "summary": "A module with a MCO agent and application to enable or disable noop",
@@ -47,7 +47,13 @@
       ]
     }
   ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    }
+  ],
     "dependencies": [
-      {"name":"puppetlabs/pe_inifile","version_requirement":">=1.0.0"}
+      {"name":"puppetlabs/inifile","version_requirement":">=1.6.0"}
   ]
 }

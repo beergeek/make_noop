@@ -21,9 +21,11 @@ module MCollective
       def resource_manage(resource_type, resource_name, cmd_hash)
         begin
           x = ::Puppet::Resource.new(resource_type, resource_name, :parameters => cmd_hash)
-          result = ::Puppet::Resource.indirection.save(x)
-          Log.info("#{cmd_hash} the resource of #{resource_type} with the title #{resource_name}: #{result}")
+          result, report = ::Puppet::Resource.indirection.save(x)
+          report.finalize_report
+          Log.info("#{cmd_hash} the resource of #{resource_type} with the title #{resource_name}: #{report.exit_status}")
         rescue => e
+          Log.debug "Could not manage resource of #{resource_type} with the title #{resource_name}: #{report.exit_status}")
           raise "Could not manage resource of #{resource_type} with the title #{resource_name}: #{e.to_s}"
         end
       end
