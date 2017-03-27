@@ -8,17 +8,19 @@ module MCollective
 
         output = mc.enable_noop()
 
-        sender_width = output.map{|s| s[:sender]}.map{|s| s.length}.max + 3
+        if !output.empty?
 
-        output.each do |result|
-          pattern = "%%%ds: %%s" % sender_width
-	  if result[:data][:out] == true
-            out = "Noop Enabled"
-          else
-            out = "Noop Still Disabled!"
+          sender_width = output.map{|s| s[:sender]}.map{|s| s.length}.max + 3
+
+          output.each do |result|
+            pattern = "%%%ds: %%s" % sender_width
+	          if result[:data][:out] == true
+              out = "Noop Enabled"
+            else
+              out = "Noop Still Disabled!"
+            end
+            puts(pattern % [result[:sender], out])
           end
-          puts(pattern % [result[:sender], out])
-
         end
 
         printrpcstats
