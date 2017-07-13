@@ -25,7 +25,7 @@ module MCollective
           report.finalize_report
           Log.info("#{cmd_hash} the resource of #{resource_type} with the title #{resource_name}: #{report.exit_status}")
         rescue => e
-          Log.debug "Could not manage resource of #{resource_type} with the title #{resource_name}: #{report.exit_status}")
+          Log.debug("Could not manage resource of #{resource_type} with the title #{resource_name}: #{report.exit_status}")
           raise "Could not manage resource of #{resource_type} with the title #{resource_name}: #{e.to_s}"
         end
       end
